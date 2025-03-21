@@ -1,6 +1,7 @@
 import { useState } from "react";
 import CampForm from "@/components/CampForm";
 import Tabelaimc from "@/components/Tabelaimc";
+import Link from "next/link";
 
 //página PAI
 export default function Calcimc() {
@@ -21,7 +22,16 @@ export default function Calcimc() {
             <CampForm label="peso" state={peso} funcState={setPeso} />
             <CampForm label="altura" state={altura} funcState={setAltura} />
             <button className="bg-indigo-900 text-white mx-2 p-1 rounded-lg cursor-pointer" onClick={Calcular}>Calcular</button>
+            <Link className="bg-indigo-900 text-white mx-2 p-1 rounded-lg cursor-pointer text-center" href={{
+                pathname: "/dadosimc/Dadosimc",
+                query:{
+                    p_peso:peso,
+                    p_altura:altura,
+                    p_imc:imc
+                }
+            }}>Dados IMC</Link>
             <p className="bg-zinc-100 p-1">Resultado: {imc.toFixed(1)}</p>
+
 
             <Tabelaimc imc={imc}/>
         </div>
